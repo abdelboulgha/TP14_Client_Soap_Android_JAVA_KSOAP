@@ -6,7 +6,6 @@
     android:layout_height="wrap_content"
     android:padding="16dp">
 
-    <!-- Champ Solde -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilSolde"
         android:layout_width="match_parent"
@@ -21,7 +20,6 @@
             android:inputType="numberDecimal" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <!-- RadioGroup pour le type -->
     <RadioGroup
         android:id="@+id/typeGroup"
         android:layout_width="match_parent"

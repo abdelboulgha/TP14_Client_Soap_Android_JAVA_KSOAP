@@ -40,17 +40,13 @@ public class MainActivity extends AppCompatActivity {
         loadComptes();
     }
 
-    /**
-     * Initialise les vues.
-     */
+
     private void initViews() {
         recyclerView = findViewById(R.id.recyclerView);
         btnAdd = findViewById(R.id.fabAdd);
     }
 
-    /**
-     * Configure le RecyclerView.
-     */
+
     private void setupRecyclerView() {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
@@ -81,7 +77,6 @@ public class MainActivity extends AppCompatActivity {
                     .show();
         });
         
-        // Listener pour le bouton Modifier
         adapter.setOnEditClickListener(compte -> {
             if (compte == null || compte.getId() == null) {
                 Toast.makeText(MainActivity.this, "Erreur: Compte invalide.", Toast.LENGTH_SHORT).show();
@@ -91,16 +86,12 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    /**
-     * Configure les listeners.
-     */
+
     private void setupListeners() {
         btnAdd.setOnClickListener(v -> showAddCompteDialog());
     }
 
-    /**
-     * Affiche la boîte de dialogue pour ajouter un compte.
-     */
+
     private void showAddCompteDialog() {
         View dialogView = getLayoutInflater().inflate(R.layout.popup, null);
 
@@ -116,7 +107,6 @@ public class MainActivity extends AppCompatActivity {
                         return;
                     }
 
-                    // Variables finales pour utilisation dans le lambda
                     final double solde;
                     try {
                         String soldeText = etSolde.getText() != null ? etSolde.getText().toString() : "";
@@ -156,9 +146,7 @@ public class MainActivity extends AppCompatActivity {
                 .show();
     }
 
-    /**
-     * Charge la liste des comptes depuis le service SOAP.
-     */
+
     private void loadComptes() {
         executorService.execute(() -> {
             try {
@@ -184,13 +172,10 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    /**
-     * Affiche la boîte de dialogue pour modifier un compte.
-     */
+
     private void showEditCompteDialog(Compte compte) {
         View dialogView = getLayoutInflater().inflate(R.layout.popup, null);
         
-        // Pré-remplir les champs avec les valeurs actuelles
         TextInputEditText etSolde = dialogView.findViewById(R.id.etSolde);
         RadioButton radioCourant = dialogView.findViewById(R.id.radioCourant);
         RadioButton radioEpargne = dialogView.findViewById(R.id.radioEpargne);
@@ -200,12 +185,10 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
         
-        // Pré-remplir le solde
         if (compte.getSolde() != null) {
             etSolde.setText(String.valueOf(compte.getSolde()));
         }
         
-        // Pré-sélectionner le type
         if (compte.getType() == TypeCompte.COURANT) {
             radioCourant.setChecked(true);
         } else {
@@ -216,7 +199,6 @@ public class MainActivity extends AppCompatActivity {
                 .setView(dialogView)
                 .setTitle("Modifier le compte")
                 .setPositiveButton("Modifier", (dialog, which) -> {
-                    // Variables finales pour utilisation dans le lambda
                     final double solde;
                     try {
                         String soldeText = etSolde.getText() != null ? etSolde.getText().toString() : "";
@@ -240,7 +222,7 @@ public class MainActivity extends AppCompatActivity {
                             runOnUiThread(() -> {
                                 if (success) {
                                     Toast.makeText(MainActivity.this, "Compte modifié.", Toast.LENGTH_SHORT).show();
-                                    loadComptes(); // Recharger la liste pour voir les modifications
+                                    loadComptes();
                                 } else {
                                     Toast.makeText(MainActivity.this, "Erreur lors de la modification.", Toast.LENGTH_SHORT).show();
                                 }

@@ -37,18 +37,14 @@ public class CompteAdapter extends RecyclerView.Adapter<CompteAdapter.CompteView
         this.onDeleteClickListener = listener;
     }
 
-    /**
-     * Met à jour la liste des comptes affichés.
-     */
+
     public void updateComptes(List<Compte> newComptes) {
         comptes.clear();
         comptes.addAll(newComptes);
         notifyDataSetChanged();
     }
 
-    /**
-     * Supprime un compte de la liste.
-     */
+
     public void removeCompte(Compte compte) {
         int position = comptes.indexOf(compte);
         if (position >= 0) {
@@ -57,9 +53,7 @@ public class CompteAdapter extends RecyclerView.Adapter<CompteAdapter.CompteView
         }
     }
 
-    /**
-     * Met à jour un compte existant dans la liste.
-     */
+
     public void updateCompte(Compte compte) {
         int position = -1;
         for (int i = 0; i < comptes.size(); i++) {
@@ -115,7 +109,6 @@ public class CompteAdapter extends RecyclerView.Adapter<CompteAdapter.CompteView
                 return;
             }
             
-            // Gérer les valeurs null
             String idText = compte.getId() != null ? String.valueOf(compte.getId()) : "N/A";
             textId.setText("Compte Numéro " + idText);
             

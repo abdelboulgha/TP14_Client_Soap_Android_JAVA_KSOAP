@@ -15,7 +15,6 @@ public class Compte {
         this.type = type;
     }
 
-    // Getters and Setters
     public Long getId() {
         return id;
     }

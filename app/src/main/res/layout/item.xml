@@ -6,7 +6,6 @@
     android:layout_height="wrap_content"
     android:padding="16dp">
 
-    <!-- ID du compte -->
     <TextView
         android:id="@+id/textId"
         android:layout_width="wrap_content"
@@ -38,7 +37,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textSolde" />
 
-    <!-- Date de création -->
     <TextView
         android:id="@+id/textDate"
         android:layout_width="wrap_content"
@@ -49,7 +47,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textType" />
 
-    <!-- Bouton Modifier -->
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnEdit"
         android:layout_width="120dp"
@@ -58,7 +55,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Bouton Supprimer -->
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnDelete"
         android:layout_width="120dp"
